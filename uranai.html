@@ -17,15 +17,11 @@
         <style>
             .uranai-container {
                 max-width: 560px;
-                margin: 2rem auto;
-                padding: 0 1rem;
+                margin: 0 auto;
+                padding: 2rem 1rem;
             }
-            .uranai-step {
-                display: none;
-            }
-            .uranai-step.active {
-                display: block;
-            }
+            .uranai-step { display: none; }
+            .uranai-step.active { display: block; }
             .progress {
                 display: flex;
                 gap: 8px;
@@ -33,29 +29,28 @@
                 margin-bottom: 2rem;
             }
             .dot {
-                width: 8px;
-                height: 8px;
+                width: 10px;
+                height: 10px;
                 border-radius: 50%;
                 background: #ccc;
             }
-            .dot.done { background: #7F77DD; }
-            .dot.current { background: #222; }
+            .dot.done { background: #0000FF; }
+            .dot.current { background: #FF4F02; }
             .q-number {
-                font-size: 12px;
-                color: #888;
+                font-size: 14px;
+                color: #555;
                 text-align: center;
                 margin-bottom: 0.5rem;
-                letter-spacing: 0.05em;
             }
             .pattern-badge {
-                font-size: 11px;
-                color: #aaa;
+                font-size: 12px;
+                color: #999;
                 text-align: center;
                 margin-bottom: 1rem;
             }
             .uranai-question {
-                font-size: 18px;
-                font-weight: 500;
+                font-size: 22px;
+                font-weight: bold;
                 text-align: center;
                 margin-bottom: 1.5rem;
                 line-height: 1.6;
@@ -63,38 +58,37 @@
             .choices {
                 display: flex;
                 flex-direction: column;
-                gap: 8px;
+                gap: 10px;
                 margin-bottom: 1.5rem;
             }
             .choice-btn {
                 background: #fff;
-                border: 1px solid #ddd;
+                border: 2px solid #FF99CC;
                 border-radius: 8px;
                 padding: 0.75rem 1rem;
-                font-size: 15px;
+                font-size: 16px;
                 cursor: pointer;
                 text-align: left;
+                font-family: sans-serif;
                 transition: background 0.15s;
-                font-family: inherit;
             }
-            .choice-btn:hover { background: #f5f5f5; }
+            .choice-btn:hover { background: #FFE5F2; }
             .choice-btn.selected {
-                border: 2px solid #7F77DD;
-                background: #f5f4ff;
+                border-color: #0000FF;
+                background: #e8e8ff;
             }
             .next-btn {
                 width: 100%;
                 padding: 0.75rem;
                 border-radius: 8px;
-                background: #222;
+                background: #FF99CC;
                 color: #fff;
                 border: none;
-                font-size: 15px;
+                font-size: 16px;
                 cursor: pointer;
-                margin-top: 0.5rem;
-                opacity: 0.3;
+                font-family: sans-serif;
+                opacity: 0.4;
                 pointer-events: none;
-                font-family: inherit;
             }
             .next-btn.enabled {
                 opacity: 1;
@@ -102,16 +96,15 @@
             }
             .result-card {
                 background: #fff;
-                border: 1px solid #eee;
+                border: 3px solid #FF99CC;
                 border-radius: 12px;
                 padding: 2rem;
                 text-align: center;
             }
             .result-label {
-                font-size: 12px;
-                color: #aaa;
+                font-size: 14px;
+                color: #999;
                 margin-bottom: 0.75rem;
-                letter-spacing: 0.05em;
             }
             .result-gif {
                 width: 100%;
@@ -121,26 +114,27 @@
                 display: block;
             }
             .result-title {
-                font-size: 24px;
+                font-size: 28px;
                 font-weight: bold;
+                color: #FF4F02;
                 margin-bottom: 0.75rem;
             }
             .result-desc {
-                font-size: 14px;
-                color: #555;
+                font-size: 16px;
+                color: #333;
                 line-height: 1.8;
                 margin-bottom: 1.5rem;
             }
             .retry-btn {
-                background: transparent;
-                border: 1px solid #ddd;
+                background: #FF99CC;
+                border: none;
                 border-radius: 8px;
-                padding: 0.5rem 1.5rem;
+                padding: 0.6rem 2rem;
+                font-size: 16px;
                 cursor: pointer;
-                font-size: 14px;
-                font-family: inherit;
+                color: #fff;
+                font-family: sans-serif;
             }
-            .retry-btn:hover { background: #f5f5f5; }
         </style>
     </head>
     <body>
@@ -157,59 +151,57 @@
             </div>
         </div>
 
-        <div class="uranai-container">
+        <div class="main">
+            <div class="uranai-container">
 
-            <!-- ステップ1 -->
-            <div class="uranai-step active" id="step1">
-                <div class="progress">
-                    <div class="dot current"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
+                <div class="uranai-step active" id="step1">
+                    <div class="progress">
+                        <div class="dot current"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="q-number">質問 1 / 3</div>
+                    <div class="pattern-badge" id="badge"></div>
+                    <div class="uranai-question" id="q1"></div>
+                    <div class="choices" id="c1"></div>
+                    <button class="next-btn" id="next1" onclick="go(2)">次へ →</button>
                 </div>
-                <div class="q-number">質問 1 / 3</div>
-                <div class="pattern-badge" id="badge"></div>
-                <div class="uranai-question" id="q1"></div>
-                <div class="choices" id="c1"></div>
-                <button class="next-btn" id="next1" onclick="go(2)">次へ →</button>
-            </div>
 
-            <!-- ステップ2 -->
-            <div class="uranai-step" id="step2">
-                <div class="progress">
-                    <div class="dot done"></div>
-                    <div class="dot current"></div>
-                    <div class="dot"></div>
+                <div class="uranai-step" id="step2">
+                    <div class="progress">
+                        <div class="dot done"></div>
+                        <div class="dot current"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="q-number">質問 2 / 3</div>
+                    <div class="uranai-question" id="q2"></div>
+                    <div class="choices" id="c2"></div>
+                    <button class="next-btn" id="next2" onclick="go(3)">次へ →</button>
                 </div>
-                <div class="q-number">質問 2 / 3</div>
-                <div class="uranai-question" id="q2"></div>
-                <div class="choices" id="c2"></div>
-                <button class="next-btn" id="next2" onclick="go(3)">次へ →</button>
-            </div>
 
-            <!-- ステップ3 -->
-            <div class="uranai-step" id="step3">
-                <div class="progress">
-                    <div class="dot done"></div>
-                    <div class="dot done"></div>
-                    <div class="dot current"></div>
+                <div class="uranai-step" id="step3">
+                    <div class="progress">
+                        <div class="dot done"></div>
+                        <div class="dot done"></div>
+                        <div class="dot current"></div>
+                    </div>
+                    <div class="q-number">質問 3 / 3</div>
+                    <div class="uranai-question" id="q3"></div>
+                    <div class="choices" id="c3"></div>
+                    <button class="next-btn" id="next3" onclick="showResult()">占う！🔮</button>
                 </div>
-                <div class="q-number">質問 3 / 3</div>
-                <div class="uranai-question" id="q3"></div>
-                <div class="choices" id="c3"></div>
-                <button class="next-btn" id="next3" onclick="showResult()">占う！🔮</button>
-            </div>
 
-            <!-- 結果 -->
-            <div class="uranai-step" id="result">
-                <div class="result-card">
-                    <div class="result-label">今日のあなたは…</div>
-                    <img class="result-gif" id="r-gif" src="" alt="結果のGIF">
-                    <div class="result-title" id="r-title"></div>
-                    <div class="result-desc" id="r-desc"></div>
-                    <button class="retry-btn" onclick="init()">もう一度占う 🔄</button>
+                <div class="uranai-step" id="result">
+                    <div class="result-card">
+                        <div class="result-label">今日のあなたは…</div>
+                        <img class="result-gif" id="r-gif" src="" alt="結果のGIF">
+                        <div class="result-title" id="r-title"></div>
+                        <div class="result-desc" id="r-desc"></div>
+                        <button class="retry-btn" onclick="init()">もう一度占う 🔄</button>
+                    </div>
                 </div>
-            </div>
 
+            </div>
         </div>
 
         <div class="footer">
@@ -230,7 +222,7 @@
             {qs:['好きな天気は？','移動するなら乗り物は？','今の部屋の状態は？'],cs:[['快晴','曇り','雨','嵐'],['飛行機','新幹線','自転車','歩き'],['いつもきれい','まあまあ片付いてる','少し散らかってる','カオス']]},
             {qs:['音楽を聴くなら？','本を読むなら？','映画を選ぶなら？'],cs:[['テンションが上がる曲','おしゃれなジャズ','懐かしい昔の曲','無音がいい'],['自己啓発本','小説','マンガ','読まない'],['アクション','ラブストーリー','ドキュメンタリー','ホラー']]},
             {qs:['コーヒーの飲み方は？','お風呂派？シャワー派？','SNSで一番使うのは？'],cs:[['ブラック','カフェラテ','甘めのフラペチーノ','コーヒーは飲まない'],['長風呂','短めに湯船','シャワーだけ','最近サボってる'],['Twitter/X','Instagram','YouTube','使わない']]},
-            {qs:['今すぐどこかへ行けるとしたら？','好きな季節は？','誰かに誘われたら行く？'],cs:[['海','山','都会','家から出たくない'],['夏','春','秋','冬'],['即OK','内容による','少し考える','基本断る']]},
+            {qs:['今すぐどこかへ行けるとしたら？','好きな季節は？','誘われたら行く？'],cs:[['海','山','都会','家から出たくない'],['夏','春','秋','冬'],['即OK','内容による','少し考える','基本断る']]},
             {qs:['目覚ましは何個セットする？','仕事や作業のやり方は？','財布の種類は？'],cs:[['1個','2〜3個','5個以上','セットしない'],['早めに終わらせる','コツコツ進める','ギリギリに集中','気が向いたら'],['長財布','二つ折り','スマホケースに入れる','財布を持たない']]},
             {qs:['カラオケで歌うのは？','好きな食べ物のジャンルは？','好きなお酒は？'],cs:[['最新ヒット','昔のアニソン','演歌','カラオケ行かない'],['和食','洋食','中華','なんでもいい'],['ビール','ワイン','ハイボール','飲まない']]},
             {qs:['スマホの充電残量は今どのくらい？','週に何回外食する？','今一番会いたい人は？'],cs:[['80%以上','50〜80%','20〜50%','今まさに充電中'],['ほぼ毎日','2〜3回','週1くらい','ほとんどしない'],['大切な友達','家族','好きな人','誰にも会いたくない']]},
@@ -259,9 +251,9 @@
 
         const results = [
             {title:'サイコッチョー！！', gif:'saikoccho.gif', desc:'今日のあなたは無敵です。何をやってもうまくいく予感しかしない。全力で攻めていきましょう。この調子でいけばデカコーンも夢じゃない。'},
-            {title:'気分Joe Joe',        gif:'joejoe.gif',    desc:'今日はなかなかいい感じ。テンションは高くないけど、ちゃんと前向き。そんな日が実は一番いい仕事できたりする。'},
-            {title:'ニュートラルです',   gif:'neutral.gif',  desc:'可もなく不可もない、まさに「ニュートラル」な一日。無理せず流れに乗って、穏やかに過ごすのが正解です。'},
-            {title:'今日はダメだ',       gif:'dame.gif',     desc:'今日はそういう日。エネルギーを温存して、おいしいものを食べて早めに寝ましょう。明日のJoeに期待。'},
+            {title:'気分Joe Joe',        gif:'joejoe.gif',   desc:'今日はなかなかいい感じ。テンションは高くないけど、ちゃんと前向き。そんな日が実は一番いい仕事できたりする。'},
+            {title:'ニュートラルです',   gif:'neutral.gif', desc:'可もなく不可もない、まさに「ニュートラル」な一日。無理せず流れに乗って、穏やかに過ごすのが正解です。'},
+            {title:'今日はダメだ',       gif:'dame.gif',    desc:'今日はそういう日。エネルギーを温存して、おいしいものを食べて早めに寝ましょう。明日のJoeに期待。'},
         ];
 
         let current, scores;
@@ -280,11 +272,9 @@
                     b.onclick = () => sel(b, i - 1, idx);
                     cc.appendChild(b);
                 });
-                const nb = document.getElementById('next' + i);
-                nb.classList.remove('enabled');
+                document.getElementById('next' + i).classList.remove('enabled');
             }
-            const pNum = patterns.indexOf(current) + 1;
-            document.getElementById('badge').textContent = 'パターン ' + pNum + ' / 30';
+            document.getElementById('badge').textContent = 'パターン ' + (patterns.indexOf(current) + 1) + ' / 30';
             document.querySelectorAll('.uranai-step').forEach(s => s.classList.remove('active'));
             document.getElementById('step1').classList.add('active');
         }
