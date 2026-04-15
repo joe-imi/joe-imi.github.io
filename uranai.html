@@ -273,7 +273,6 @@
                 });
                 document.getElementById('next' + i).classList.remove('enabled');
             }
-            document.getElementById('badge').textContent = 'パターン ' + (patterns.indexOf(current) + 1) + ' / 30';
             document.querySelectorAll('.uranai-step').forEach(s => s.classList.remove('active'));
             document.getElementById('step1').classList.add('active');
         }
