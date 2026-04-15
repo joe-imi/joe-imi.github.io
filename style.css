@@ -143,8 +143,9 @@ body{
         height: auto;
         font-size: small;
         position: static;
-        margin: 8px auto 0;
-        text-align: center;
+        margin: 8px 12px 0 auto;
+        text-align: right;
+        align-items: flex-end;
     }
     .weather-icon {
         height: 40px;
@@ -172,6 +173,12 @@ body{
     .copy-container-list h3 {
         font-size: 15px;
         padding: 0 12px;
+    }
+    /* こんにちはボタンの位置固定 */
+    #greeting-btn {
+        position: static !important;
+        display: block;
+        margin: 16px auto;
     }
     .footer {
         height: auto;
