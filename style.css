@@ -133,8 +133,13 @@ body{
         padding-bottom: 40px;
     }
     .copy-container h1 {
-        width: 160px;
-    }
+   　 　width: 90%;
+   　 　text-align: center;
+　　}
+　　.copy-container h1 img {
+  　　  width: 60%;
+ 　 　  height: auto;
+　　}
     .copy-container h2 {
         font-size: 24px;
         width: 90%;
