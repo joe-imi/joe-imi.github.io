@@ -176,10 +176,10 @@ body{
         padding: 0 12px;
     }
     #greeting-btn {
-        position: static !important;
-        display: block;
-        margin: 16px auto;
-    }
+        position: absolute !important;
+        left: 3% !important;
+        top: 160px !important;
+　  }
     .footer {
         height: auto;
         padding-bottom: 12px;
