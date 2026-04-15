@@ -30,23 +30,29 @@ body{
     background-color: aqua;
     height: 1100px;
 }
-  
-  #weather {
+
+#weather {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  .weather-icon {
+    width: 150px;
+    height: 35px;
+    font-size: large;
+    position: absolute;
+    right: 3%;
+    top: 25%;
+}
+
+.weather-icon {
     height: 100px;
     margin-bottom: 10px;
-  }
-  
-  .weather-description {
+}
+
+.weather-description {
     font-weight: bold;
     font-size: 20px;
     float: left;
-  }
+}
 .copy-container h1{
     width: 300px;
     margin-left: auto;
@@ -132,14 +138,31 @@ body{
         min-height: 100vh;
         padding-bottom: 40px;
     }
+    #weather {
+        width: 80px;
+        height: auto;
+        font-size: small;
+        position: static;
+        margin: 8px auto 0;
+        text-align: center;
+    }
+    .weather-icon {
+        height: 40px;
+        margin-bottom: 2px;
+    }
+    .weather-description {
+        font-size: 12px;
+        float: none;
+        display: block;
+    }
     .copy-container h1 {
-   　 　width: 90%;
-   　 　text-align: center;
-　　}
-　　.copy-container h1 img {
-  　　  width: 60%;
- 　 　  height: auto;
-　　}
+        width: 90%;
+        text-align: center;
+    }
+    .copy-container h1 img {
+        width: 60%;
+        height: auto;
+    }
     .copy-container h2 {
         font-size: 24px;
         width: 90%;
