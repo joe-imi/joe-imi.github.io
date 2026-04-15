@@ -1,9 +1,7 @@
 @charset "utf-8";
-
 body{
     font-family:sans-serif;
 }
-
 .header{
     background-color: #FF99CC;
     height: 150px;
@@ -16,26 +14,22 @@ body{
     padding-left: 20px;
     padding-right: 20px;
 }
-
 .header-logo span{
     color:#0000FF;
 }
-
 .header-list li{
     list-style: none;
     float:right;
     font-size:18px;
     padding-top:110px;
     padding-bottom:70px;
-    padding-left: 20px;   /* 40px → 20px に変更 */
-    padding-right: 20px;  /* 40px → 20px に変更 */
+    padding-left: 20px;
+    padding-right: 20px;
 }
-
 .main{
     background-color: aqua;
     height: 1100px;
 }
-
   
   #weather {
     display: flex;
@@ -46,7 +40,6 @@ body{
   .weather-icon {
     height: 100px;
     margin-bottom: 10px;
-
   }
   
   .weather-description {
@@ -54,8 +47,6 @@ body{
     font-size: 20px;
     float: left;
   }
-
-
 .copy-container h1{
     width: 300px;
     margin-left: auto;
@@ -74,17 +65,13 @@ body{
     margin-top: auto;
     margin-bottom: auto;
 }
-
-
 .main span{
     color:#FF4F02;
 }
-
 .footer{
     background-color: antiquewhite;
     height:150px;
 }
-
 .footer-logo{
     float: left;
     font-size:60px;
@@ -93,11 +80,9 @@ body{
     padding-left: 20px;
     padding-right: 20px;
 }
-
 .footer-logo span{
     color:#00BB00;
 }
-
 .footer-list li{
     list-style: none;
     float:right;
@@ -106,4 +91,90 @@ body{
     padding-bottom:70px;
     padding-left: 20px;
     padding-right: 20px;
+}
+
+/* スマホ（767px以下） */
+@media (max-width: 767px) {
+    .header {
+        height: auto;
+        padding-bottom: 12px;
+        overflow: hidden;
+    }
+    .header-logo {
+        float: none;
+        font-size: 28px;
+        padding-top: 12px;
+        padding-bottom: 4px;
+        padding-left: 12px;
+        padding-right: 12px;
+        display: block;
+        text-align: center;
+    }
+    .header-list {
+        float: none;
+        text-align: center;
+    }
+    .header-list ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+    .header-list li {
+        float: none;
+        font-size: 13px;
+        padding: 4px 8px;
+    }
+    .main {
+        height: auto;
+        min-height: 100vh;
+        padding-bottom: 40px;
+    }
+    .copy-container h1 {
+        width: 160px;
+    }
+    .copy-container h2 {
+        font-size: 24px;
+        width: 90%;
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
+    .copy-container-list h3 {
+        font-size: 15px;
+        padding: 0 12px;
+    }
+    .footer {
+        height: auto;
+        padding-bottom: 12px;
+        overflow: hidden;
+    }
+    .footer-logo {
+        float: none;
+        font-size: 28px;
+        padding-top: 12px;
+        padding-bottom: 4px;
+        padding-left: 12px;
+        display: block;
+        text-align: center;
+    }
+    .footer-list {
+        float: none;
+        text-align: center;
+    }
+    .footer-list ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 4px;
+        align-items: center;
+    }
+    .footer-list li {
+        float: none;
+        font-size: 13px;
+        padding: 4px 8px;
+    }
 }
